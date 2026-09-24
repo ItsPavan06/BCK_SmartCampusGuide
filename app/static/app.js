@@ -128,24 +128,30 @@ function speakText(text) {
     utterance.volume = 1;
     utterance.lang = 'en-US';
 
-    const normalizedText = cleanText
-      .replace(/\b(please|kindly|welcome to|here is|your|the|a|an)\b/gi, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-
-    if (normalizedText && normalizedText !== cleanText) {
-      utterance.text = normalizedText;
-    }
+    utterance.text = cleanText;
 
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }
 
     currentSpeechUtterance = utterance;
+
+    // Chrome keepalive for long speech synthesis
+    let keepAliveTimer = setInterval(() => {
+      if (!window.speechSynthesis || !window.speechSynthesis.speaking) {
+        clearInterval(keepAliveTimer);
+      } else {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 10000);
+
     utterance.onend = () => {
+      clearInterval(keepAliveTimer);
       currentSpeechUtterance = null;
     };
     utterance.onerror = () => {
+      clearInterval(keepAliveTimer);
       currentSpeechUtterance = null;
     };
 
@@ -426,6 +432,8 @@ function initResultsPage() {
       });
 
       toggleRouteBtn.style.display = 'flex';
+      routeStepsDrawer.style.display = 'block';
+      toggleRouteBtn.innerHTML = 'Hide turn directions <span>↗</span>';
       toggleRouteBtn.onclick = () => {
         const isHidden = routeStepsDrawer.style.display === 'none';
         routeStepsDrawer.style.display = isHidden ? 'block' : 'none';

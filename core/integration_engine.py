@@ -557,9 +557,10 @@ def process_kiosk_query(query: str, origin: Optional[str] = None) -> Dict[str, A
             nav_data = get_directions(dest_nodes, start_location_query=extracted_origin)
             
             d_names = ", ".join([d.replace("_", " ").title() for d in extracted_dest])
-            speech = f"Here are the directions to {d_names}."
-            if nav_data.get("status") == "success":
-                speech = f"The route to {d_names} is approximately {nav_data.get('total_distance_meters')} meters, taking about {nav_data.get('estimated_time_minutes')} minutes."
+            if nav_data.get("status") == "success" and nav_data.get("directions_text"):
+                speech = nav_data["directions_text"]
+            else:
+                speech = f"The route to {d_names} is approximately {nav_data.get('total_distance_meters', 100)} meters, taking about {nav_data.get('estimated_time_minutes', 2)} minutes."
 
             return {
                 "status": "success",
@@ -609,7 +610,10 @@ def process_kiosk_query(query: str, origin: Optional[str] = None) -> Dict[str, A
         est_dist = nav_data.get("total_distance_meters", 50) if nav_data.get("status") == "success" else 50
         steps = nav_data.get("steps", [])
 
-        speech = f"{dest_display} is in {dest_block}. It is about {est_dist} meters away, a {est_time} minute walk from here."
+        if nav_data.get("status") == "success" and nav_data.get("directions_text"):
+            speech = nav_data["directions_text"]
+        else:
+            speech = f"{dest_display} is in {dest_block}. It is about {est_dist} meters away, a {est_time} minute walk from here."
 
         return {
             "status": "success",
