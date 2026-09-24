@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Bhandarkars' Arts & Science College | Smart Campus Help Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Bhandarkars' Arts & Science College home">
+        <img class="college-logo" src="{{ url_for('static', filename='bcklogo.png') }}" alt="Bhandarkars' Arts & Science College emblem">
+        <span class="brand-name">Bhandarkars' Arts &amp; Science College<span>Kundapura</span></span>
+      </a>
+      <div class="topbar-status">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="iot-status-badge">Campus guide</span>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <span id="clock">09:41 AM</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="welcome-panel" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Bhandarkars' Arts &amp; Science College · Main Hall</p>
+          <h1 id="welcome-title">Where do you<br><em>need to go?</em></h1>
+          <p class="intro-copy">Tell me what you’re looking for. I’ll help you find the right place, person, or next step.</p>
+          <a class="primary-button start-listening" href="listening.html">
+            <span class="button-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v6a3.5 3.5 0 0 0 3.5 3.5Z"/><path d="M18.5 11.5a6.5 6.5 0 0 1-13 0M12 18v3M8.5 21h7"/></svg></span>
+            <span>Start a conversation</span>
+            <span class="arrow-icon" aria-hidden="true">↗</span>
+          </a>
+          <p class="hint"><kbd>SPACE</kbd> to start listening</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-orbit orbit-three"></div>
+          <div class="art-sun">
+            <img class="art-emblem" src="{{ url_for('static', filename='bcklogo.png') }}" alt="">
+            <span class="art-sun-caption">WELCOME<small>TO CAMPUS</small></span>
+          </div>
+          <div class="art-label label-bottom">GOOD<br>TO SEE<br>YOU</div>
+          <div class="art-crosshair"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar"><span>BASCK / KUNDAPURA</span><span class="footer-middle">Your smarter way around campus</span><span>HELP · ACCESSIBILITY</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Listening | Bhandarkars' Arts & Science College</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Bhandarkars' Arts & Science College home">
+        <img class="college-logo" src="{{ url_for('static', filename='bcklogo.png') }}" alt="Bhandarkars' Arts & Science College emblem">
+        <span class="brand-name">Bhandarkars' Arts &amp; Science College<span>Kundapura</span></span>
+      </a>
+      <div class="topbar-status">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="iot-status-badge">Campus guide</span>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <span id="clock">09:41 AM</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="conversation-panel" aria-labelledby="listening-title">
+        <div class="conversation-header">
+          <p class="eyebrow"><span class="eyebrow-line"></span> I’m here with you</p>
+          <span class="session-label">LISTENING <span class="live-dot"></span></span>
+        </div>
+        <div class="listening-stage">
+          <div class="sound-field" aria-hidden="true">
+            <span class="sound-ring ring-a"></span>
+            <span class="sound-ring ring-b"></span>
+            <span class="sound-ring ring-c"></span>
+            <div class="mic-core"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v6a3.5 3.5 0 0 0 3.5 3.5Z"/><path d="M18.5 11.5a6.5 6.5 0 0 1-13 0M12 18v3M8.5 21h7"/></svg></div>
+          </div>
+          <h1 id="listening-title">I’m listening<span class="thinking-dots"><i></i><i></i><i></i></span></h1>
+          <p class="listening-caption">Speak clearly into your microphone, or type your question below.</p>
+          <div id="live-speech" class="live-speech-preview"></div>
+          <div class="waveform" aria-label="Audio input active"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          
+          <form class="text-fallback-form" id="kiosk-query-form">
+            <input type="text" class="text-fallback-input" id="manual-query-input" placeholder="Type a question... e.g. Where is the library?" autocomplete="off">
+            <button type="submit" class="text-fallback-btn">Ask ↗</button>
+          </form>
+
+          <div style="display: flex; gap: 16px; align-items: center; margin-top: 10px;">
+            <button class="quiet-button trigger-server-mic" type="button" title="Use hardware microphone if connected to Kiosk"><span>🎙️</span> Use Kiosk Mic</button>
+            <button class="quiet-button stop-listening" type="button"><span class="stop-square" aria-hidden="true"></span> Cancel</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar"><span>BASCK / KUNDAPURA</span><span class="footer-middle">Your smarter way around campus</span><span>HELP · ACCESSIBILITY</span></footer>
+  </div>
+</body>
+</html>

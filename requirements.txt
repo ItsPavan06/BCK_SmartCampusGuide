@@ -1,0 +1,11 @@
+# Core dependencies for Smart Campus AI Voice Help Desk
+Flask>=3.0.0
+pyserial>=3.5
+
+# Optional dependencies for server-side hardware microphone & offline TTS
+# (Note: The web kiosk UI uses browser-native Web Speech API & SpeechSynthesis out-of-the-box without these)
+# SpeechRecognition>=3.10.0
+# pyttsx3>=2.90
+# PyAudio>=0.2.14
+# mysql-connector-python>=8.0.0
+\

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Results | Bhandarkars' Arts & Science College</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Bhandarkars' Arts & Science College home">
+        <img class="college-logo" src="{{ url_for('static', filename='bcklogo.png') }}" alt="Bhandarkars' Arts & Science College emblem">
+        <span class="brand-name">Bhandarkars' Arts &amp; Science College<span>Kundapura</span></span>
+      </a>
+      <div class="topbar-status">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="iot-status-badge">Campus guide</span>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <span id="clock">09:41 AM</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="results-panel" aria-labelledby="results-title">
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> Here’s what I found</p>
+            <h1 id="results-title">Campus Guide<br><em id="target-subject">Result details</em></h1>
+          </div>
+          <div class="heard-query"><span class="heard-mark">“</span><span id="query-text">Where is the library?</span><span class="heard-mark">”</span></div>
+        </div>
+        <div class="results-grid">
+          <article class="result-card result-primary" id="primary-card">
+            <div class="card-topline"><span class="result-number">01</span><span class="match-tag" id="primary-tag">BEST MATCH</span></div>
+            <div class="result-icon building-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M2 21h20M8 9h2M14 9h2M8 13h2M14 13h2M8 17h2M14 17h2"/></svg></div>
+            <h2 id="primary-title">Central Library</h2>
+            <p id="primary-description">Locating campus destination...</p>
+            <div class="result-meta" id="primary-meta">
+              <span class="meta-icon">⌖</span>
+              <strong id="primary-walk-time">1 min</strong>
+              <span id="primary-distance">20m walk</span>
+              <span class="meta-divider"></span>
+              <span class="open-dot"></span>
+              <span id="primary-hours">Open today</span>
+            </div>
+            <div id="route-steps-drawer" class="route-steps-drawer" style="display: none;"></div>
+            <button class="result-action" id="toggle-route-btn" type="button">Show turn-by-turn route <span>↗</span></button>
+          </article>
+          <article class="result-card result-secondary" id="secondary-card">
+            <div class="card-topline"><span class="result-number">02</span><span class="match-tag" id="secondary-tag">ALSO NEARBY</span></div>
+            <div class="result-icon print-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/><path d="M18 12h.01"/></svg></div>
+            <h2 id="secondary-title">Computer Science Lab</h2>
+            <p id="secondary-description">Nearby student amenity or department.</p>
+            <div class="result-meta" id="secondary-meta">
+              <span class="meta-icon">⌖</span>
+              <strong id="secondary-walk-time">2 min</strong> walk
+            </div>
+            <button class="text-action" id="secondary-action-btn" type="button">Ask about this <span>↗</span></button>
+          </article>
+        </div>
+        <div class="results-footer">
+          <div style="display: flex; gap: 20px; align-items: center;">
+            <button class="secondary-button ask-again" type="button">Ask something else <span>↻</span></button>
+            <button class="secondary-button replay-speech" id="replay-speech-btn" type="button">Hear again <span>🔊</span></button>
+          </div>
+          <span>Bhandarkars' Arts &amp; Science College · Smart Help Desk</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar"><span>BASCK / KUNDAPURA</span><span class="footer-middle">Your smarter way around campus</span><span>HELP · ACCESSIBILITY</span></footer>
+  </div>
+</body>
+</html>
