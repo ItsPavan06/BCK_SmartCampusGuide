@@ -411,17 +411,22 @@ function initResultsPage() {
 
   if (data && data.primary_result) {
     const p = data.primary_result;
+    const steps = p.steps || (data.navigation_details && data.navigation_details.steps) || [];
+    const description = p.description || p.subtitle || '';
+    const isGenericUnderstandingMessage = /could not understand your question|please ask about campus locations/i.test(description);
+    const displayDescription = isGenericUnderstandingMessage
+      ? (p.subtitle || steps.join(' ') || 'Campus destination details unavailable.')
+      : description;
 
     if (targetSubjectEl) targetSubjectEl.textContent = p.title || 'Result';
     if (primaryTagEl) primaryTagEl.textContent = p.status_badge || 'BEST MATCH';
     if (primaryTitleEl) primaryTitleEl.textContent = p.title || 'Campus Destination';
-    if (primaryDescEl) primaryDescEl.textContent = p.description || p.subtitle || '';
+    if (primaryDescEl) primaryDescEl.textContent = displayDescription;
     if (primaryWalkTimeEl) primaryWalkTimeEl.textContent = p.walk_time || '1 min';
     if (primaryDistEl) primaryDistEl.textContent = p.distance ? `${p.distance} walk` : 'on campus';
     if (primaryHoursEl) primaryHoursEl.textContent = p.hours || 'Working hours: 8:30 AM - 5:15 PM';
 
     // Populate turn-by-turn route steps if available
-    const steps = p.steps || (data.navigation_details && data.navigation_details.steps) || [];
     if (steps.length > 0 && routeStepsDrawer && toggleRouteBtn) {
       routeStepsDrawer.innerHTML = '';
       steps.forEach((step, idx) => {

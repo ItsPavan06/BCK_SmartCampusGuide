@@ -94,7 +94,7 @@ CAMPUS_GRAPH_EDGES = [
     ("block_b", "library", 20, "Take the central stairs/elevator in Block B to the 2nd floor."),
     ("block_b", "computer_lab", 15, "Take the central stairs in Block B to the 1st floor, room 104."),
     ("block_b", "canteen", 45, "Exit Block B rear door and follow the covered walkway to the Canteen."),
-    ("admin_block", "principal_office", 10, "Enter Admin Block main lobby; Principal's cabin is on the ground floor right."),
+    ("admin_block", "principal_office", 10, "Enter Admin Block main lobby; Principal's cabin is on the first floor left."),
     ("admin_block", "placement_cell", 25, "Take the Admin Block main stairs to the 1st floor Placement Cell."),
     ("canteen", "sports_complex", 80, "Walk past the canteen garden along the perimeter path to the Sports Complex."),
     ("sports_complex", "hostel", 90, "Follow the tree-lined path behind the sports ground to the Student Hostels.")
